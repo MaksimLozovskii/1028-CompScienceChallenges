@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+    background-color: beige;
+}
+
+body h1{
+    font-size: 72px;
+}
+
+body a button {
+    width: 400px;
+    height: 200px;
+    border: none;
+    background-color: aqua;
+    color: white;
+    font-size: 48px;
+}

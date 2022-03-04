@@ -1,67 +1,60 @@
-from flask import Flask, render_template, request, redirect, url_for
-from statusSetter import change
 
-path = "/home/HAIRYCACTUS/mysite/assets/scheduled/config.json"
+# A very simple Flask Hello World app for you to get started with...
 
-# Setup the flask app.
-app = Flask(__name__)
+from flask import Flask #imports the Flask function from flask
+from flask import render_template #imports the render_template function from Flask
+from flask import request #imports the request function from flask
+from flask import redirect #imports the redirect function from flask
+from flask import url_for #imports the url_for function from flask
+from userDataSetter import storeUserData #import the storeUserData function from the userDataSetter
+from userDataRetriever import sendEmailTo #import the sendEmailTo fucntion
 
-# Define flask routes
-@app.route('/')
-def serve_homePage():
-    return render_template("index.html")
+app = Flask(__name__) #Creates the flask app called app
 
-@app.route('/userOne', methods=["GET", "POST"])
-def serve_userOne():
+# ROUTES
+@app.route('/') #Defines the route at the default route
+def serve_indexPage(): #Function that will run at the default route
+    return render_template("index.html") #Renders an index.html file on the default route
 
-    if request.method == "POST":
-        change("userOne")
+@app.route('/captureForm') #Defines the captureForm route
+def serve_captureForm(): #Function that will run at the /captureForm route
+    return render_template("captureForm.html") #Renders the captureForm.html file at the this route
+
+@app.route('/emailingPage')
+def serve_emailingPage():
+    return render_template("emailingPage.html") #renders the emailingPage.html at this route
+
+@app.route('/success') #Defines the success route
+def serve_success(): #Function that will run at the /success route
+    return render_template("success.html") #Renders the success.html file at this route
+
+# ROUTE METHODS
+@app.route('/captureForm', methods=['POST'])
+def serve_captureFormMethods():
+        #Get user Email
+        userEmailData = request.form['userEmail'] #Gets the data from the userEmail input
+        userEmail = userEmailData.upper() #Takes the text out of it
+
+        #Get user Forename
+        userForenameData = request.form['userForename'] #Gets the data from the userForename input
+        userForename = userForenameData.upper() #Takes the text out of it
+
+        #Get user Surname
+        userSurnameData = request.form['userSurname'] #Gets the data from the userSurname input
+        userSurname = userSurnameData.upper() #Takes the text out of it
+
+        storeUserData(userEmail, userForename, userSurname) #store the data into JSON
+
+        #On success
+        return redirect(url_for("serve_success")) #Redirects the user to the success.html page on success
+
+@app.route('/emailingPage', methods=['POST'])
+def serve_emailingPageMethods():
+        #Get user Email
+        userEmailData = request.form['email-parameter']
+        userEmail = userEmailData.upper()
+
+        sendEmailTo(userEmail)
+
         return redirect(url_for("serve_success"))
-    else:
-        return render_template("responsePage.html")
-
-@app.route('/userTwo', methods=["GET", "POST"])
-def serve_userTwo():
-
-    if request.method == "POST":
-        change("userTwo")
-        return redirect(url_for("serve_success"))
-    else:
-        return render_template("responsePage.html")
-
-@app.route('/userThree', methods=["GET", "POST"])
-def serve_userThree():
-
-    if request.method == "POST":
-        change("userThree")
-        return redirect(url_for("serve_success"))
-    else:
-        return render_template("responsePage.html")
-
-@app.route('/userFour', methods=["GET", "POST"])
-def serve_userFour():
-
-    if request.method == "POST":
-        change("userFour")
-        return redirect(url_for("serve_success"))
-    else:
-        return render_template("responsePage.html")
-
-@app.route('/userFive', methods=["GET", "POST"])
-def serve_userFive():
-
-    if request.method == "POST":
-        change("userFive")
-        return redirect(url_for("serve_success"))
-    else:
-        return render_template("responsePage.html")
-
-@app.route('/success')
-def serve_success():
-    return render_template("success.html")
-
-# Program start
-if __name__ == '__main__':
-    app.run()
-
 

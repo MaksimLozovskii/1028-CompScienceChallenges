@@ -1,0 +1,24 @@
+{
+    "userRecords": [
+        {
+            "email": "KLYCHNICK512@GMAIL.COM",
+            "forename": "MAKSIM",
+            "surname": "LOZOVSKII"
+        },
+        {
+            "email": "hello@world",
+            "forename": "HELLO",
+            "surname": "WORLD"
+        },
+        {
+            "email": "LOZOVSKAYA2011@GMAIL.COM",
+            "forename": "ELENA",
+            "surname": "LOZOVSKAYA"
+        },
+        {
+            "email": "MMURZAKHANOV@GMAIL.COM",
+            "forename": "MEDET",
+            "surname": "MURZAKHANOV"
+        }
+    ]
+}
