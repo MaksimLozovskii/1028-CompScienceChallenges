@@ -17,8 +17,8 @@ def sendEmailTo(email): #function definition that takes the user email and sends
         if(json_object["email"] == email): #if the email attribute value matches the parsed data
         #send an email
             def send_email(to):
-                myEmail = "hackcactusprog@gmail.com"
-                myPass = "humanproghack"
+                myEmail = "##########"
+                myPass = "###########"
                 subject = "Hello Mr " + json_object["forename"] + "_" + json_object["surname"]
                 body = "Hello, this is automatic"
                 email_text = "Subject: {}\n\n{}".format(subject, body)
