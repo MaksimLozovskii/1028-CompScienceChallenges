@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/indexPage.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/indexPage.css') }}"> <!-- Add path to css file -->>
     <title>Hello World</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1>PYJ-Mailer</h1>
 
-    <a href="/captureForm"><button>Capture Form</button></a>
-    <a href="/emailingPage"><button>Emailing Page</button></a>
+<p>
+    <a href="/captureForm"><button>Register a new user</button></a>
+</p>
+<p>
+  <a href="/emailingPage"><button>Email an existing user</button></a>
+</p>
+
 </body>
 </html>

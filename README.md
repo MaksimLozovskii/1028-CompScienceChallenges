@@ -18,3 +18,6 @@ https://maksimlozovskii.pythonanywhere.com/
 In order to use this application, you will need to:
 1. Add your gmail email address and password to the userDataRetriever.py file instead of the "########" symbols
 2. Enable less secure apps on that gmail account
+3. Add path to the userData.json file into userDataRetriever.py script
+4. Add path to the userData.json file into userDataSetter.py script
+5. Within each of the .html files add path to css style files within the css folder (will depend on where you hosted the application)

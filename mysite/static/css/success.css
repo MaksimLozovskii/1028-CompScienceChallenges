@@ -1,18 +1,16 @@
 body{
-    text-align: center;
-    background-color: #2E3047;
-}
-
-body h1{
+    margin-top: 3%;
     font-size: 72px;
+    background-color: #2E3047;
+    text-align: center;
     color: white;
 }
 
-body a button {
-    width: 40%;
+a button {
+    width: 10%;
     padding: 1%;
     border: none;
     background-color: #3BBA9C;
     color: white;
-    font-size: 48px;
+    font-size: 24px;
 }

@@ -1,0 +1,53 @@
+body{
+    margin-top: 3%;
+    background-color: #2E3047;
+    text-align: center;
+}
+
+body h1{
+    font-size: 60px;
+    color: white;
+}
+.box{
+    background-color: #43455c;
+    padding: 3% 5% 3% 5%;
+    text-align: left;
+    width: 20%;
+    margin: 0 auto;
+}
+
+form h2{
+    color: #3BBA9C;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+input{
+    width: 90%;
+    margin-bottom: 3.5%;
+}
+
+p{
+    text-align: center;
+}
+
+p input{
+    padding: 0;
+    width: 70%;
+    padding: 2%;
+    border: none;
+    font-size: 24px;
+    background-color: #9400D3;
+    color: white;
+}
+
+a button {
+    width: 40%;
+    margin-left: 5%;
+    padding: 2%;
+    border: none;
+    background-color: #3BBA9C;
+    color: white;
+    font-size: 24px;
+}

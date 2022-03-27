@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/captureFormPage.css') }}"> <!-- Add path to css file -->>
     <title>Capture Form</title>
 </head>
 <body>
-    <form method="POST">
-        <h2>Enter Email</h2>
-        <input name="userEmail">
-        <h2>Enter Name</h2>
-        <input name="userForename">
-        <h2>Enter Surname</h2>
-        <input name="userSurname">
+    <h1>Register a new user</h1>
+    <div class="box">
+        <form method="POST">
+            <h2>Enter Email</h2>
+            <input name="userEmail">
+            <h2>Enter Name</h2>
+            <input name="userForename">
+            <h2>Enter Surname</h2>
+            <input name="userSurname">
 
-        <input type="submit">
-    </form>
+            <p >
+                <input type="SUBMIT">
+            </p>
+        </form>
 
-    <a href="/"><button>Home</button></a>
+        <a href="/"><button>Home</button></a>
+        <a href="/emailingPage"><button>Email</button></a>
+    </div>
 </body>
 </html>

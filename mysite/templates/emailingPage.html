@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/emailingPage.css') }}"> <!-- Add path to css file -->>
     <title>Emailing page</title>
 </head>
 <body>
-    <form method="POST">
-        <h2>Enter Email</h2>
-        <input name="email-parameter">
-        <input type="submit">
-    </form>
+    <h1>Email an existing user</h1>
 
-    <a href="/"><button>Home</button></a>
+    <div class="box">
+        <form method="POST">
+            <h2>Enter Email</h2>
+            <input name="email-parameter">
+            <p>
+              <input type="submit">
+            </p>
+        </form>
+        <a href="/"><button>Home</button></a>
+        <a href="/captureForm"><button>Capture</button></a>
+    </div>
 </body>
 </html>

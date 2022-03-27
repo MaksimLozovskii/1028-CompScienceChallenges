@@ -1,6 +1,6 @@
 import json #Imports the whole JSON file
 
-path = "/home/klych/mysite/assets/userData/userData.json" #Defines the path the JSON file
+path = "#################" #Defines the path the JSON file
 listObj = [] #Object holder array
 
 def storeUserData(email, forename, surname):
