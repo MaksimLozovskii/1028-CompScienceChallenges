@@ -11,7 +11,10 @@ The following code has been tested on the https://www.pythonanywhere.com/ websit
 
 >Note that the following application is under development, meaning the code may be re-written to achieve certain functionality.
 
-## TO-DO:
+## Implementation Guide
+https://maksimlozovskii.pythonanywhere.com/
 
-- Add "how to launch the application on the home server"
-- Add "features" section
+## Set-up
+In order to use this application, you will need to:
+1. Add your gmail email address and password to the userDataRetriever.py file instead of the "########" symbols
+2. Enable less secure apps on that gmail account
