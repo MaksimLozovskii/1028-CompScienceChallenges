@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="jsonStyles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>JSON</h2>
+
+        <div>
+            Okay, we can finally start typing out the python scripts to work with JSON. First of all, we need to create the actual JSON file, to do that, go to the “mysite” folder, and in it, create a folder called “assets”. In it, create a folder called “userData”.
+        </div>
+
+        <div class="img">
+            <img src="jsonImgPicture1.png" alt="">
+        </div>
+
+        <div class="img">
+            <img src="jsonImgPicture2.png" alt="">
+        </div>
+
+        <div>
+            And finally, inside the “userData” folder, create a file called “userData.json”.
+        </div>
+
+        <div class="img">
+            <img src="jsonImgPicture3.png" alt="">
+        </div>
+
+        <div>
+            Okay, here is where it gets a bit weird. The way JSON stores data is using objects. We know that we want to save a lot of email addresses, right? But we want to keep them linked to the forename and surname data. So, we need to create an object instance that will hold the email, forename and surname for each person who left their details. So, if we want to keep a lot of object instances, we need to create an object, which will hold an array of objects, which in turn will hold the object instances with the user data, the code inside the JSON should looks like this:
+        </div>
+
+        <div class="img">
+            <img src="jsonImgPicture4.png" alt="">
+        </div>
+
+        <div>
+            Objects are defined by curly braces, and arrays are defined by square brackets. Here, we have an object, in which a “userRecords” array is present. As you can see, the array is empty right now, but that is okay, we will now create a script which will use the data from the text fields on out capture form HTML page and store it in the JSON file as objects.
+        </div>
+
+        <div class="buttons">
+            <a href="routeMethodsPage.html"><button>BACK</button></a>
+            <a href="index.html"><button>MAIN MENU</button><a></a>
+            <a href="userDataSetterPage.html"><button>NEXT</button></a>
+        </div>
+    </div>
+</body>
+</html>

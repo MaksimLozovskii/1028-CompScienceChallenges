@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="routeMethodsStyles.css">
+    <title>Route Methods And Forms</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Route methods and form manipulation</h2>
+
+        <div>
+            Cool, but when we click the submit button, a 405 error comes up, this is because we don’t have any code to handle the “POST” request from the form, remember in the form section we have defined the method to be “POST”? Well, here it is. There are many different types of requests that a server can handle, such as GET, POST, UPDATE, DELETE, etc, for now we will focus on the POST request, which allows us to send data to the server for it to process.
+        </div>
+
+        <div>
+            Now, as we learned what the POST method is, we need to tell the flask app that the captureForm page has a POST method in it, to do this, we copy the route code and add “, methods=[“POST]”.
+        </div>
+
+
+        <pre>
+            <code>
+                # ROUTE METHODS
+                @app.route('/captureForm', methods=['POST'])
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture1.png" alt="">
+        </div>
+
+        <div>
+            Now, we can define the function that will run when the POST request is handled, let’s call it “serve_captureFormMethods():”.
+        </div>
+
+        <pre>
+            <code>
+                def serve_captureFormMethods():
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture2.png" alt="">
+        </div>
+
+        <div>
+            Within the method, we want to process the data from the form, to do this, we use another flask function “request” which we also need to import separately. 
+        </div>
+
+        <pre>
+            <code>
+                from flask import request #imports the request function from flask
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture3.png" alt="">
+        </div>
+
+        <div>
+            Note that all imports should be together at the top of the file!
+        </div>
+
+        <div>
+            Now, in the server_captureFormMethods function, we can add the code to request the data from the form text boxes using the request function. Remember in the captureForm.html, we added the attributes to the &lt;input&gt; tags? Well, now take the value written after the “name=”, we will need it now.
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture4.png" alt="">
+        </div>
+
+        <div>
+            In order to get the data from each of these text boxes, we use the corresponding input name= value:
+        </div>
+
+        <pre>
+            <code>
+                userEmailData = request.form['userEmail']
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture5.png" alt="">
+        </div>
+
+        <div>
+            Here, we defined the userEmailData variable which stores the data requested from the userEmail text field input name=”userEmail”.
+        </div>
+
+        <div>
+            To get the text in the upper case, we need to use the function “.upper” which is built into python and does not need to be imported separately:
+        </div>
+
+        <pre>
+            <code>
+                userEmailData = request.form['userEmail']
+                userEmail = userEmailData.upper()
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture6.png" alt="">
+        </div>
+
+        <div>
+            The reason why we are uppercasing the text, is to get rid of all the fluctuations in the letter size, it really does not matter for the email system, but it prevents the user from entering some crazy string of upper and lower case letters
+        </div>
+
+        <div>
+            The capitalised text will be stored in the userEmail variable. Now, do the same thing for the rest of the text fields, and at the end, you should have something like this:
+        </div>
+
+        <pre>
+            <code>
+        #Get user Forename
+        userForenameData = request.form['userForename'] 
+        userForename = userForenameData.upper()
+
+        #Get user Surname
+        userSurnameData = request.form['userSurname'] 
+        userSurname = userSurnameData.upper() 
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture7.png" alt="">
+        </div>
+
+        <div>
+            Cool, now we have a way to capture the data from the text boxes, but, can we output it onto the page? Yes we can!
+        </div>
+
+        <pre>
+            <code>
+                return "Email: " + userEmail + " Forename: " + userForename + "Surname: " + userSurname
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="renderTemplateImgPicture8.png" alt="">
+        </div>
+
+        <div>
+            Put this line at the bottom of the function, this will print all the captured data in the following format. Now reload the web app, go to the captureForm page, put in some data and click the submit button and see what happens.
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture9.png" alt="">
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture10.png" alt="">
+        </div>
+
+        <div>
+            Really nice, but, what if we serve an HTML page instead of text to show successful transmission of data onto the server? That would be awesome, let’s do that!
+        </div>
+
+        <div>
+            In the templates folder, create a new file called “success.html” and type the following code:
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture11.png" alt="">
+        </div>
+
+        <div>
+            Now, go back to the flask_app.py and add a new route /success with a function “serve_success():” and add a return render_template(“success.html” code.
+        </div>
+
+        <pre>
+            <code>
+                @app.route('/success') 
+                def serve_success(): 
+                     return render_template("success.html") 
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture12.png" alt="">
+        </div>
+
+        <div>
+            Now add some comments to both the previous code and to this.
+        </div>
+        
+        <pre>
+            <code>
+        @app.route('/captureForm') #Defines the captureForm route
+        def serve_captureForm(): #Function that will run at the /captureForm route
+            return render_template("captureForm.html") #Renders the captureForm.html file at the this route
+
+        @app.route('/success') #Defines the success route
+        def serve_success(): #Function that will run at the /success route
+            return render_template("success.html") #Renders the success.html file at this route
+
+        # ROUTE METHODS
+        @app.route('/captureForm', methods=['POST'])
+        def serve_captureFormMethods():
+
+            #Get user Email
+            userEmailData = request.form['userEmail'] #Gets the data from the userEmail input
+            userEmail = userEmailData.upper() #Takes the text out of it
+
+            #Get user Forename
+            userForenameData = request.form['userForename'] #Gets the data from the userForename input
+            userForename = userForenameData.upper() #Takes the text out of it
+
+            #Get user Surname
+            userSurnameData = request.form['userSurname'] #Gets the data from the userSurname input
+            userSurname = userSurnameData.upper() #Takes the text out of it
+
+            return "Email: " + userEmail + " Forename: " + userForename + "Surname: " + userSurname
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture13.png" alt="">
+        </div>
+
+        <div>
+            Now, instead of the old return function at the bottom of the serve_captureFormMethods function, we are going to add something else. First, import the “redirect” and “url_for” functions from flask (also comment the code):
+        </div>
+
+        <pre>
+            <code>
+                from flask import Flask #imports the Flask function from flask
+                from flask import render_template #imports the render_template function from Flask
+                from flask import request #imports the request function from flask
+                from flask import redirect #imports the redirect function from flask
+                from flask import url_for #imports the url_for function from flask
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture14.png" alt="">
+        </div>
+
+        <pre>
+            <code>
+                #On success
+                return redirect(url_for("serve_success")) 
+            </code>
+        </pre>
+
+        <div>
+            Then, change the return statement in the serve_captureFormMethods function, to the following:
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture15.png" alt="">
+        </div>
+
+        <div>
+            The following code works similar to the <a> tag in html, but in this case, it uses the redirect function along with a url_for(“server_success”) function as a parameter to launch the function that servers the success.html page. Now, reload the web app, and see what happens when you submit the form.
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture16.png" alt="">
+        </div>
+
+        <div>
+            Lets now add a route and an HTML page for the “Emailing Page” button. Using the technique we learned, create a new HTML file “emailingPage.html” in the templates folder, create a new route called “/emailingPage” and add a function inside it called “serve_emailingPage():”.
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture17.png" alt="">
+        </div>
+
+        <div>
+            Here is the markup for the emailing page. On the page, we have a form with a POST method, which asks the user to type in the email. The attribute value for name= is “email-parameter”, we will use this later in a python script which will use the data from the text field to send email to the typed email address. Now, go back and reload the flask app.
+        </div>
+
+        <pre>
+            <code>
+        # ROUTES
+        @app.route('/') #Defines the route at the default route
+        def serve_indexPage(): #Function that will run at the default route
+            return render_template("index.html") #Renders an index.html file on the default route
+
+        @app.route('/captureForm') #Defines the captureForm route
+        def serve_captureForm(): #Function that will run at the /captureForm route
+            return render_template("captureForm.html") #Renders the captureForm.html file at the this route
+
+        @app.route('/success') #Defines the success route
+        def serve_success(): #Function that will run at the /success route
+            return render_template("success.html") #Renders the success.html file at this route
+
+        # ROUTE METHODS
+        @app.route('/captureForm', methods=['POST'])
+        def serve_captureFormMethods():
+            #Get user Email
+            userEmailData = request.form['userEmail'] #Gets the data from the userEmail input
+            userEmail = userEmailData.upper() #Takes the text out of it
+
+            #Get user Forename
+            userForenameData = request.form['userForename'] #Gets the data from the userForename input
+            userForename = userForenameData.upper() #Takes the text out of it
+
+            #Get user Surname
+            userSurnameData = request.form['userSurname'] #Gets the data from the userSurname input
+            userSurname = userSurnameData.upper() #Takes the text out of it
+
+            storeUserData(userEmail, userForename, userSurname) #store the data into JSON
+
+            #On success
+            return redirect(url_for("serve_success")) #Redirects the user to the success.html page on success
+            </code>
+        </pre>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture18.png" alt="">
+        </div>
+
+        <div class="img">
+            <img src="routeMethodsImgPicture19.png" alt="">
+        </div>
+
+        <div class="buttons">
+            <a href="renderTemplatePage.html"><button>BACK</button></a>
+            <a href="index.html"><button>MAIN MENU</button><a></a>
+            <a href="jsonPage.html"><button>NEXT</button></a>
+        </div>
+    </div>
+</body>
+</html>

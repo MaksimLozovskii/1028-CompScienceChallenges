@@ -1,0 +1,80 @@
+body{
+    color: #ddd;
+    background-color: #3c3f58;
+}
+
+.wrapper{
+    background-color: #2e3047;
+}
+
+h1{
+    text-align: center;
+    font-size: 52px;
+}
+
+div .title{
+    color: #3BBA9C;
+    text-align: center;
+    font-size: 52px;
+}
+
+div{
+    font-size: 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+.level{
+    color: #3BBA9C;;
+}
+
+a > button{
+    padding: 1% 0 1% 0;
+    margin-top: 10px;
+    width: 70%;
+    font-weight: bolder;
+    font-size: 25px;
+    background-color: #3BBA9C;;
+    color: #ddd;
+}
+
+.buttons{
+    text-align: center;
+}
+
+.buttons{
+    text-align: center;
+}
+
+ul li{
+    text-align: center;
+    list-style: none;
+}
+
+/* CUSTOM SCROLLBAR*/
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #3c3f58;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #3BBA9C;;
+    border-radius: 10px;
+  }
+  
+  pre code {
+    background-color: #3c3f58;
+    display: block;
+    font-size: 20px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 5% 10% 5% 0;
+
+    color: #3BBA9C;
+}

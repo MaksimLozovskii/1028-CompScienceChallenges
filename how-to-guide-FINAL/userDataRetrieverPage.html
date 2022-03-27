@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userDataRetrieverStyles.css">
+    <title>User Data Retriever</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>User Data Retriever and SMPT Script</h2>
+
+        <div>
+            Now, lets do the userDataRetriever.py script which will retrieve the data from the JSON file and then send and email to the provided email address.
+        </div>
+
+        <div>
+            First, we need to create a file in the mysite folder called “userDataRetriever.py”, in it, we want to import json, smtplib and add the path to the json file along with a listObj array.
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture1.png" alt="">
+        </div>
+
+        <div>
+            Then, we want to define a function sendEmailTo() which takes the parameter “email”. In the function we then want to read the contents of the JSON file into the listObj array. (Add comments too!).
+        </div>
+        <div class="img">
+            <img src="userDataRetrieverImgPicture2.png" alt="">
+        </div>
+
+        <div>
+            Then, we want to loop through the whole listObj array to find the object with the parsed email address by using the if statement we used in the previous python script:
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture3.png" alt="">
+        </div>
+
+        <div>
+            Okay, basic functionality is now written, but we don’t yet have the functionality to send an email. There are 2 ways you can it, one way is to put the code to send the email right into the script like this:
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture4.png" alt="">
+        </div>
+
+        <div>
+            Where “your email” and “your password” is the email and the password from the email address you want the messages to be sent from.
+        </div>
+
+        <div>
+            NOTE: that in order for this to work, you must go to the email address you want the messages to be sent from, and enable “less secure apps access”. To do this, go to gmail -> then press on your avatar -> then press on “manage your google account” button -> then go to security tab -> scroll down until you find the “less secure apps access” and click the “turn on access”.
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture5.png" alt="">
+        </div>
+
+        <div>
+            For the purpose of this guide, I will be using my email address that I have specifically created for this, I will not show my password for cyber security reasons (I know you really want me to but I can’t 😊 )
+        </div>
+
+        <div>
+            Before you go back to the flask app, test the script by calling the function and adding the email address you want the email to be sent to:
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture6.png" alt="">
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture7.png" alt="">
+        </div>
+
+        <div>
+            I got this error because I have not added the email address of the receiver into the JSON file, so first, before you send out an email, add the user with that email to the JSON file using the capture form. Also, when testing from the script, type the email as capitals, as this is the way the email is being stored in the JSON file.    
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture8.png" alt="">
+        </div>
+
+        <div>
+            Now, go back to the flask_app.py and import the function from this file.
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture9.PNG" alt="">
+        </div>
+
+        <div>
+            Then, create a copy of the emailingPage route, but this time with methods=[“POST”]. Then add the function serve_emailingPageMethods(): into which you should add the code to request the form from the “email-parameter” field, uppercase the email address and then send the email using the imported function. On success, serve the success page:
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture10.png" alt="">
+        </div>
+
+        <div>
+            Delete the function call from the bottom of the userDataRetriever.py python script then reload and test.
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture11.png" alt="">
+        </div>
+
+        <div class="img">
+            <img src="userDataRetrieverImgPicture12.png" alt="">
+        </div>
+
+        <div>
+            If you got the same – absolute success!!!
+        </div>
+
+        <h2>
+            usedDataRetriever Code
+        </h2>
+
+        <pre>
+            <code>
+                import json #imports Json
+                import smtplib #imports smtplib
+
+                path = "/home/klych/mysite/assets/userData/userData.json" #path to the userData.json file
+                listObj = [] #Json object array holder
+
+                def sendEmailTo(email): #sends an email to the provided address
+                    #Read JSON
+                    with open(path) as fp: #Open the json file at the provided path as fp
+                        listObj = json.load(fp) #load the contents of the JSON file into the object array
+
+                    for i in listObj['userRecords']: #loop throught the userRecords array stored in the listObj array
+                        json_str = json.dumps(i) #get the string version of the array of objects
+
+                        json_object = json.loads(json_str) #load the array into an object
+
+                        if(json_object["email"] == email): #if the email attribute value matches the parsed data
+                        #send an email
+                            def send_email(to):
+                                myEmail = "hackcactusprog@gmail.com"
+                                myPass = "humanproghack"
+                                subject = "Hello Mr " + json_object["forename"] + "_" + json_object["surname"]
+                                body = "Hello, this is automatic"
+                                email_text = "Subject: {}\n\n{}".format(subject, body)
+
+                                server = smtplib.SMTP("smtp.gmail.com", 587)
+                                server.starttls()
+                                server.login(myEmail, myPass)
+                                server.sendmail(myEmail, to, email_text)
+                                server.quit()
+                            send_email(email)
+
+                            # on success
+                            print("email sent")
+                        else:
+                            print("email not found")
+            </code>
+        </pre>
+
+        <div class="buttons">
+            <a href="userDataSetterPage.html"><button>BACK</button></a>
+            <a href="index.html"><button>MAIN MENU</button><a></a>
+            <a href="cssPage.html"><button>NEXT</button></a>
+        </div>
+    </div>
+</body>
+</html>

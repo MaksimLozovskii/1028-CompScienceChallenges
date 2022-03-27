@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="routesStyles.css">
+    <title>Routes</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>
+            Routes
+        </h2>
+
+        <div>
+            So, lets now add some more routes, for example lets add a route that will in future act as out capture form. Just copy the other route code, but change the “/” to “/captureForm” and delete all comments. Then, lets call the function something else, something like “server_captureForm():”. Then, after the return, type what ever you like, I typed “Hello, I am the capture form page!”. Now, reload the web page. Now, wait, why is that I am getting the message from a different app? Well, we need to access the code within the captureForm route, this can be done by typing in /captureForm after the URL for your web app, mine looks something like this: https://klych.pythonanywhere.com/captureForm, this is what I have:
+        </div>
+
+        <div class="img">
+            <img src="routesImgPicture1.png" alt="">
+        </div>
+
+        <div>
+            If you have the same, or something that you wrote, fantastic! If not, go back and read through again, you might have missed something.
+        </div>
+
+        <div>
+            Okay, now as we have a route working, lets add some comments to the code.
+        </div>
+
+        <pre>
+            <code>
+                # A very simple Flask Hello World app for you to get started with...
+
+                from flask import Flask #imports the Flask function from flask
+                
+                app = Flask(__name__) #Creates the flask app called app
+
+                @app.route('/') #Defines the route at the default route
+                def hello_world(): #Function that will run at the default route
+                return 'Hello from Flask!' #Returns a message
+
+                @app.route('/captureForm') #Defines the captureForm route
+                def serve_captureForm(): #Function that will run at the /captureForm route
+                    return "Hello, I am the capture form page!" #Returns a message
+          </code>
+        </pre>
+
+        <div class="img">
+            <img src="routesImgPicture2.png" alt="">
+        </div>
+    
+        <div class="buttons">
+            <a href="helloWorldPage.html"><button>BACK</button></a>
+            <a href="mainMenu.html"><button>MAIN MENU</button><a></a>
+            <a href="renderTemplatePage.html"><button>NEXT</button></a>
+        </div>
+    </div>
+</body>
+</html>
