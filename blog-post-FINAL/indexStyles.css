@@ -1,0 +1,73 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+    
+    background-color: #2e3047;
+  }
+
+h2{
+    color: #3bba9c;
+}
+
+p, ul, li{
+    color: #ddd;
+    font-size: 20px;
+}
+
+a{
+    color: #3bba9c;
+}
+  
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: #3c3f58;
+  }
+  
+  .leftcolumn {
+    float: left;
+    width: 75%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: right;
+    width: 25%;
+  }
+  
+  /* Fake image */
+  .fakeimg {
+    background-color: #2e3047;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card {
+    background-color: #3c3f58;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #3c3f58;
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
