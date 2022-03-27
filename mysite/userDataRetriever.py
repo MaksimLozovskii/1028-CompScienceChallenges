@@ -1,10 +1,13 @@
 import json #imports Json
 import smtplib #imports smtplib
 
-path = "##############" #path to the userData.json file
+path = "/home/####/mysite/assets/userData/userData.json" #path to the userData.json file
 listObj = [] #Json object array holder
 
 def sendEmailTo(email): #function definition that takes the user email and sends an email to the provided address
+
+    email = email.strip()
+    email = email.lower()
     #Read JSON
     with open(path) as fp: #Open the json file at the provided path as fp
         listObj = json.load(fp) #load the contents of the JSON file into the object array
@@ -17,8 +20,8 @@ def sendEmailTo(email): #function definition that takes the user email and sends
         if(json_object["email"] == email): #if the email attribute value matches the parsed data
         #send an email
             def send_email(to):
-                myEmail = "###########"
-                myPass = "#########"
+                myEmail = "####"
+                myPass = "####"
                 subject = "Hello " + json_object["forename"] + "_" + json_object["surname"]
                 body = "Hello, this is automatic"
                 email_text = "Subject: {}\n\n{}".format(subject, body)
@@ -34,7 +37,6 @@ def sendEmailTo(email): #function definition that takes the user email and sends
             print("email sent")
         else:
             print("email not found")
-
 
 
 

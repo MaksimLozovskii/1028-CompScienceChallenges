@@ -8,6 +8,9 @@ from flask import redirect #imports the redirect function from flask
 from flask import url_for #imports the url_for function from flask
 from userDataSetter import storeUserData #import the storeUserData function from the userDataSetter
 from userDataRetriever import sendEmailTo #import the sendEmailTo fucntion
+import re #regex
+
+regex = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
 
 app = Flask(__name__) #Creates the flask app called app
 
@@ -28,33 +31,47 @@ def serve_emailingPage():
 def serve_success(): #Function that will run at the /success route
     return render_template("success.html") #Renders the success.html file at this route
 
+@app.route('/error') #Defines the error route
+def serve_error(): #Function that will run at the /error route
+    return render_template("error.html") #Renders the error.html file at this route
+
 # ROUTE METHODS
 @app.route('/captureForm', methods=['POST'])
 def serve_captureFormMethods():
         #Get user Email
         userEmailData = request.form['userEmail'] #Gets the data from the userEmail input
-        userEmail = userEmailData.upper() #Takes the text out of it
+        userEmailLower = userEmailData.lower() #lowercases
+        userEmail = userEmailLower.strip() #Strips the white space
 
         #Get user Forename
         userForenameData = request.form['userForename'] #Gets the data from the userForename input
-        userForename = userForenameData.upper() #Takes the text out of it
+        userForenameLower = userForenameData.lower() #lowercases
+        userForename = userForenameLower.strip() #Strips the white space
 
         #Get user Surname
         userSurnameData = request.form['userSurname'] #Gets the data from the userSurname input
-        userSurname = userSurnameData.upper() #Takes the text out of it
+        userSurnameLower = userSurnameData.lower() #lowercases
+        userSurname = userSurnameLower.strip() #Strips the white space
 
-        storeUserData(userEmail, userForename, userSurname) #store the data into JSON
+        if not regex.match(userEmail):
+            return redirect(url_for("serve_error")) #Redirects to error.html file
+        else:
+            storeUserData(userEmail, userForename, userSurname) #store the data into JSON
 
-        #On success
-        return redirect(url_for("serve_success")) #Redirects the user to the success.html page on success
+            #On success
+            return redirect(url_for("serve_success")) #Redirects the user to the success.html page on success
 
 @app.route('/emailingPage', methods=['POST'])
 def serve_emailingPageMethods():
         #Get user Email
         userEmailData = request.form['email-parameter']
-        userEmail = userEmailData.upper()
+        userEmailLower = userEmailData.upper() #lowercases
+        userEmail = userEmailLower.strip() #Strips the white space
 
-        sendEmailTo(userEmail)
+        if not regex.match(userEmail):
+            return redirect(url_for("serve_error")) #Redirects to error.html file
+        else:
+            sendEmailTo(userEmail)
 
-        return redirect(url_for("serve_success"))
+            return redirect(url_for("serve_success"))
 
