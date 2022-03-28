@@ -213,6 +213,35 @@
                 <p>
                     To do this, I started creating something like user stories in power point to detail the way the normal user would interact with the system. This gave me a huge insight into how to design a hackathon in a way that would be interesting to a normal user, yes, in later iterations it is necessary to start thinking about the incompliant users and possible unexpected events which may occur, but first focus on the system where the user wants to do what he is told and does not want to break the system, then start thinking about other cases. I have also used FIGMA to create some mock-ups of how the user will register onto the event and what he/she will see when participating, its not finished, think about this really carefully, this should also be done for the unexpected events.
                 </p>
+                <p>
+                    As part of the project, I have been provided a very nice roadmap of what has to be done for the project, have a look:
+                    <ol>
+                        <li>
+                            A Powerpoint that describes a first pass design with a passive keen to help audience
+                        </li>
+                        <li>
+                            One or more point of view powerpoints that explicitly clarifies what messages and choices a user receives. The goal with these is to ensure that each message can be understood without any need for additional clarification (which can’t be provided by the human program)
+                        </li>
+                        <li>
+                            A ‘testing’ powerpoint that explores various problems that might occur at different stages in the program and how the human program might become aware of the problems and what it might do to address them.
+                        </li>
+                        <li>
+                            Then the development of an initial coding implementation of the human program
+                        </li>
+                        <li>
+                            Then a simulated interface where users can pretend to be a group of people interacting over time and can give feedback on how they feel, what problems might occur, any changes to the instructions or choices that they are given.
+                        </li>
+                        <li>
+                            Test with possible users via the simulation
+                        </li>
+                        <li>
+                            Test with a real project
+                        </li>
+                    </ol>
+                    <p>
+                        These are applicable to any project, and you should keep this in mind when working on this project. At this point in time, I am at the 2nd stage.
+                    </p>
+                </p>
 
                 <h2>Example of what the power point could look like:</h2>
 
@@ -237,6 +266,129 @@
                 <p>
                     As for other pieces of software, it is important to carry out both UNIT and system testing, lay these out in an excel document. 
                 </p>
+
+                <h2>More on hackathons and related instuciton sets</h2>
+                <p>
+                    At this point in time, I don't have any valid isntuciton sets that would work for the task, but I do have some ideas that could really help you in figuring out a way to create an instruction set that will work perfectly.
+                </p>
+                    <ol>
+                        <li>
+                            So, to start off, the hackathon event that I am working with is online based;
+                        </li>
+                        <li>
+                            The platform for the event is discord;
+                        </li>
+                        <li>
+                            The organising team will have to organise a time slot;
+                        </li>
+                        <li>
+                            The organising team will have to write a welcoming speech and a event closing speech;
+                        </li>
+                        <li>
+                            The users will have to attend the event and do the task at the provided time slot;
+                        </li>
+                        <li>
+                            The users will have to complete the provided task and submit it to discord which can (in theory) have a web hook to a github account
+                        </li>
+                        <li>
+                            The users will have to follow a set of rules in order for the event to be fair
+                        </li>
+                    </ol>
+
+                    <p>
+                        So, how am I imagining the whole event algorithm?
+                    </p>
+                    
+                    <ol>
+                        <li>
+                            The organising team registers
+                        </li>
+                        <li>
+                            The participants register
+                        </li>
+                        <li>
+                            The organising team downloads discord + responds to the human program
+                        </li>
+                        <li>
+                            The organising team registers on discord + responds to the human program
+                        </li>
+                        <li>
+                            The organising team creates a discord server using the provided specification + responds to the human program
+                        </li>
+
+                        <li>
+                            TASK FOR THE HACKATHON IS PROVIDED
+                        </li>
+
+                        <li>
+                            The participants download discord + respond to the human program
+                        </li>
+                        <li>
+                            The participants register on discord + respond to the human program
+                        </li>
+                        <li>
+                            The organising team shares the discord server link with participants + responds to the human program
+                        </li>
+                        <li>
+                            The participants join the discord server + respond to the human program
+                        </li>
+                        <li>
+                            The participants follow the steps on the discord server + respond to the human program
+                        </li>
+                        <li>
+                            The participants now have access to all necessary information + respond to the human program
+                        </li>
+                        <li>
+                            The organising team then writes the welcoming speech by provided specification + responds to the human program
+                        </li>
+                        <li>
+                            The organising team then writes the closing speech by provided specification + responds to the human program
+                        </li>
+                        <li>
+                            The organising team then arranges a time slot for the event + responds to the human program
+                        </li>
+                        <li>
+                            The participants read the time slot and react to it + respond to the human program
+                        </li>
+                        <li>
+                            Day before the event start, the organising team emails the participants + responds to the human program
+                        </li>
+                        <li>
+                            On the day of the event, the participants join the outlined discord channel
+                        </li>
+                        <li>
+                            The organising team read out the welcoming speech + responds to the human program
+                        </li>
+                        <li>
+                            The organising team read out the rules + responds to the human program
+                        </li>
+                        <li>
+                            The organising team then provides access to the task data to the participants + responds to the human program
+                        </li>
+                        <li>
+                            The participants do the task under a time limit
+                        </li>
+                        <li>
+                            The participants submit work + respond to the human program
+                        </li>
+                        <li>
+                            The organising team then reads out the closing speech + responds to the human program
+                        </li>
+                        <li>
+                            JUDGEMENT FOR THE HACKATHON SUBMISSIONS IS PROVIDED
+                        </li>
+                        <li>
+                            ALL USERS ARE REWARDED
+                        </li>
+                    </ol>
+
+                    <p>
+                        There is a lot of information missing, particularly about the specifications, the task, the judgement process and the rewarding process.
+                    </p>
+
+                    <p>
+                        This is because at this point, they don't really matter, but they are part of the final system, so they need to be taken into consideration, at this point I don't really have any ideas for them.
+                    </p>
 
                 <h2>Examples of my Website made in Figma</h2>
 
